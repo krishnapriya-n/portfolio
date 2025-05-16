@@ -4,60 +4,148 @@ const ctx = canvas.getContext('2d');
 canvas.width = 400;
 canvas.height = 600;
 
-let paddle = {
-  x: canvas.width / 2 - 50,
-  y: canvas.height - 20,
-  width: 100,
-  height: 10,
-  dx: 7,
-};
+// Paddle properties
+const paddleWidth = 100;
+const paddleHeight = 15;
+let paddleX = (canvas.width - paddleWidth) / 2;
+const paddleY = canvas.height - paddleHeight - 10; // fixed bottom paddle position
 
-let ball = {
-  x: canvas.width / 2,
-  y: 100,
-  radius: 10,
-  dx: 3,
-  dy: 3,
-};
+// Top bar properties
+const topBarHeight = 40;
+
+// Ball properties
+const ballRadius = 10;
+let ballX = canvas.width / 2;
+let ballY = canvas.height / 2;
+let ballSpeedX = 3;
+let ballSpeedY = -3;
 
 let score = 0;
-let gameOver = false;
+let isGameOver = false;
+
+// Keyboard control flags
+let leftPressed = false;
+let rightPressed = false;
+
+// Touch dragging
+let dragging = false;
 
 function drawPaddle() {
-  ctx.fillStyle = '#F6C4C8';
-  ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+  ctx.fillStyle = '#8C6180';
+  ctx.fillRect(paddleX, paddleY, paddleWidth, paddleHeight);
+}
+
+function drawTopBar() {
+  ctx.fillStyle = 'rgba(140, 97, 128, 0.8)'; // opaque bar
+  ctx.fillRect(0, 0, canvas.width, topBarHeight);
 }
 
 function drawBall() {
   ctx.beginPath();
-  ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
   ctx.fillStyle = '#8C6180';
+  ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
   ctx.fill();
   ctx.closePath();
 }
 
-function drawTopBar() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-  ctx.fillRect(0, 0, canvas.width, 20);
-}
-
 function drawScore() {
-  ctx.font = '20px Jura';
   ctx.fillStyle = '#8C6180';
-  ctx.fillText(`Points: ${score}`, 10, 35);
+  ctx.font = '20px Jura, monospace';
+  ctx.fillText(`Points: ${score}`, 10, 30);
 }
 
 function drawGameOver() {
-  ctx.font = '36px Jura';
   ctx.fillStyle = '#8C6180';
-  ctx.fillText('YOU LOSE', canvas.width / 2 - 90, canvas.height / 2 - 20);
-  ctx.font = '24px Jura';
-  ctx.fillText(`YOUR SCORE: ${score}`, canvas.width / 2 - 90, canvas.height / 2 + 20);
+  ctx.font = '40px Jura, monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('YOU LOSE', canvas.width / 2, canvas.height / 2 - 20);
+  ctx.font = '30px Jura, monospace';
+  ctx.fillText(`YOUR SCORE: ${score}`, canvas.width / 2, canvas.height / 2 + 30);
 }
 
-function update() {
-  if (gameOver) return;
+function updatePaddle() {
+  if (leftPressed) {
+    paddleX -= 7;
+  }
+  if (rightPressed) {
+    paddleX += 7;
+  }
+  // Clamp paddle within canvas
+  if (paddleX < 0) paddleX = 0;
+  if (paddleX + paddleWidth > canvas.width) paddleX = canvas.width - paddleWidth;
+}
 
+function updateBall() {
+  ballX += ballSpeedX;
+  ballY += ballSpeedY;
+
+  // Bounce off left and right walls
+  if (ballX + ballRadius > canvas.width || ballX - ballRadius < 0) {
+    ballSpeedX = -ballSpeedX;
+  }
+
+  // Bounce off top bar
+  if (ballY - ballRadius <= topBarHeight) {
+    ballSpeedY = -ballSpeedY;
+  }
+
+  // Bounce off paddle
+  if (
+    ballY + ballRadius >= paddleY &&
+    ballX >= paddleX &&
+    ballX <= paddleX + paddleWidth
+  ) {
+    ballSpeedY = -ballSpeedY;
+    score += 10;
+  }
+
+  // Check if ball missed paddle (goes below bottom)
+  if (ballY - ballRadius > canvas.height) {
+    isGameOver = true;
+  }
+}
+
+// Event listeners for keyboard
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') leftPressed = true;
+  if (e.key === 'ArrowRight') rightPressed = true;
+});
+
+document.addEventListener('keyup', (e) => {
+  if (e.key === 'ArrowLeft') leftPressed = false;
+  if (e.key === 'ArrowRight') rightPressed = false;
+});
+
+// Touch controls
+canvas.addEventListener('touchstart', (e) => {
+  dragging = true;
+  movePaddleWithTouch(e);
+});
+
+canvas.addEventListener('touchmove', (e) => {
+  if (dragging) {
+    movePaddleWithTouch(e);
+  }
+  e.preventDefault(); // prevent scrolling while touching canvas
+});
+
+canvas.addEventListener('touchend', () => {
+  dragging = false;
+});
+
+function movePaddleWithTouch(e) {
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  let touchX = touch.clientX - rect.left;
+
+  // Center paddle on touch X, clamp within canvas
+  paddleX = touchX - paddleWidth / 2;
+  if (paddleX < 0) paddleX = 0;
+  if (paddleX + paddleWidth > canvas.width) paddleX = canvas.width - paddleWidth;
+}
+
+// Main game loop
+function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   drawTopBar();
@@ -65,45 +153,13 @@ function update() {
   drawBall();
   drawScore();
 
-  ball.x += ball.dx;
-  ball.y += ball.dy;
-
-  if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
-    ball.dx *= -1;
-  }
-
-  if (ball.y - ball.radius < 20) {
-    ball.dy *= -1;
-  }
-
-  // Paddle collision
-  if (
-    ball.y + ball.radius >= paddle.y &&
-    ball.x >= paddle.x &&
-    ball.x <= paddle.x + paddle.width
-  ) {
-    ball.dy *= -1;
-    score += 10;
-  }
-
-  // Game over
-  if (ball.y + ball.radius > canvas.height) {
-    gameOver = true;
+  if (isGameOver) {
     drawGameOver();
-    return;
-  }
-
-  requestAnimationFrame(update);
-}
-
-function keyDownHandler(e) {
-  if (e.key === 'ArrowRight' && paddle.x + paddle.width < canvas.width) {
-    paddle.x += paddle.dx;
-  } else if (e.key === 'ArrowLeft' && paddle.x > 0) {
-    paddle.x -= paddle.dx;
+  } else {
+    updatePaddle();
+    updateBall();
+    requestAnimationFrame(draw);
   }
 }
 
-document.addEventListener('keydown', keyDownHandler);
-
-update();
+draw();
