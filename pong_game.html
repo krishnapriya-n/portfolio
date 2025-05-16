@@ -2,91 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Pong Game Popup</title>
+<title>Pong Game</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-  }
-  /* The modal background */
-  #gameModal {
-    display: none; /* hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-
-  /* The modal content container */
-  #gameContent {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    position: relative;
-    width: 450px;
-    max-width: 90%;
-  }
-
-  /* Close button */
-  #closeBtn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    background: none;
-  }
-
-  /* Canvas styling */
   canvas {
     border: 2px solid #8C6180;
-    display: block;
-    margin: 0 auto;
     background: white;
+    display: block;
+    margin: 20px auto;
   }
 </style>
 </head>
 <body>
+  <canvas id="gameCanvas"></canvas>
 
-<button id="openGameBtn">Open Pong Game</button>
-
-<!-- Modal -->
-<div id="gameModal">
-  <div id="gameContent">
-    <button id="closeBtn">&times;</button>
-    <canvas id="gameCanvas" width="400" height="600"></canvas>
-  </div>
-</div>
-
-<script src="assets/pong.js"></script>
-<script>
-  const modal = document.getElementById('gameModal');
-  const openBtn = document.getElementById('openGameBtn');
-  const closeBtn = document.getElementById('closeBtn');
-
-  openBtn.onclick = () => {
-    modal.style.display = 'flex';
+  <script src="pong.js"></script>
+  <script>
     window.startGame();
-  };
-
-  closeBtn.onclick = () => {
-    modal.style.display = 'none';
-    window.stopGame();
-  };
-
-  // Optional: Close modal when clicking outside content
-  modal.onclick = (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-      window.stopGame();
-    }
-  };
-</script>
+  </script>
 </body>
 </html>
