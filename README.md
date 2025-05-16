@@ -31,7 +31,7 @@ It features soft pastels, smooth animations, and a unique **video transition eff
 
 ## 🖼️ Preview
 
-![Screenshot](https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/screenshot.jpg)  
+![Screenshot](https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/screenshot.png)  
 
 ---
 
