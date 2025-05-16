@@ -155,67 +155,86 @@ body {
   object-fit: cover;
 }
 
-/* === Mobile-friendly overrides === */
+/* ========== MOBILE STYLES ========== */
+
 @media (max-width: 768px) {
+  /* Make body scrollable on mobile and remove fixed height */
   body {
-    height: auto;        /* Let body grow and scroll */
-    overflow-y: auto;    /* Enable vertical scrolling */
-    background-attachment: scroll; /* Fix for mobile background */
+    height: auto;
+    overflow-y: auto;
+    padding: 20px 10px;
   }
-
+  
   .container {
-    position: static;    /* Remove absolute positioning */
-    max-width: 90%;
-    margin: 4rem auto 3rem auto; /* center horizontally with vertical margin */
-    padding: 15px 20px;
-    border-radius: 10px;
+    position: static;
+    max-width: 100%;
+    padding: 15px 10px;
+    margin-top: 60px; /* leave space for navbar */
   }
-
+  
   .heading {
-    font-size: 2.5rem;  /* smaller heading */
-    color: #000000;     /* softer color on mobile */
+    font-size: 36px;
+    text-align: center;
+    color: black;
   }
-
+  
   .description {
-    font-size: 1rem;
-    color: #000000cc;   /* softer text color for readability */
+    font-size: 14px;
+    line-height: 1.5;
+    color: black;
+    text-align: center;
   }
-
+  
   .cv-button {
-    width: 100%;        /* full width button on small screens */
+    width: 100%;
     height: 50px;
     line-height: 50px;
-    font-size: 1.1rem;
+    font-size: 14px;
     border-radius: 8px;
+    margin: 20px 0;
+    display: block;
   }
-
+  
   .social-buttons {
-    position: fixed;    /* fix at bottom */
-    bottom: 15px;
-    right: 15px;
-    gap: 12px;
+    position: static;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
   }
-
+  
   .social-button {
     width: 50px;
     height: 50px;
-    border-radius: 14px;
+    border-radius: 15px;
+    background-size: 50%;
   }
-
+  
+  /* Navbar as 2x2 grid with equal sized buttons */
   .navbar {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 10px 15px;
     background: rgba(246, 196, 200, 0.9);
-    padding: 0.5rem 0;
+    padding: 10px 15px;
     box-shadow: 0 2px 8px rgba(140, 97, 128, 0.2);
     z-index: 1000;
+    border-radius: 10px;
   }
-
+  
   .nav-button {
+    width: 100%;
+    height: 45px;
     font-size: 1rem;
-    padding: 8px 15px;
+    padding: 0;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
