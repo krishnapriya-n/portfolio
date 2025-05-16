@@ -173,12 +173,12 @@ body {
 
   .heading {
     font-size: 2.5rem;  /* smaller heading */
-    color: #8C6180;     /* softer color on mobile */
+    color: #000000;     /* softer color on mobile */
   }
 
   .description {
     font-size: 1rem;
-    color: #8C6180cc;   /* softer text color for readability */
+    color: #000000cc;   /* softer text color for readability */
   }
 
   .cv-button {
