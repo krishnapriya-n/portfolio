@@ -15,6 +15,8 @@ body {
   max-width: 700px;
   padding: 20px;
   border-radius: 10px;
+  /* Remove background color - assuming none defined for desktop */
+  /* If you had background-color on container, make sure to remove */
 }
 
 .heading {
@@ -168,8 +170,10 @@ body {
   .container {
     position: static;
     max-width: 100%;
-    padding: 15px 10px;
-    margin-top: 60px; /* leave space for navbar */
+    padding: 0; /* Remove padding so container doesn’t block content */
+    margin-top: 110px; /* space below navbar to avoid overlap */
+    border-radius: 0;
+    background: transparent !important;
   }
   
   .heading {
