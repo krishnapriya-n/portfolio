@@ -1,3 +1,4 @@
+/* ========== GLOBAL STYLES ========== */
 body {
   margin: 0;
   padding: 0;
@@ -17,28 +18,57 @@ body {
   border-radius: 10px;
 }
 
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .heading {
   font-family: 'Jura', sans-serif;
   font-size: 64px;
   font-weight: bold;
   color: black;
-  margin-bottom: 20px;
-  margin-top:30px;
+  margin: 0;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  box-shadow: 0 0 20px 6px #F6C4C8, 0 0 30px 10px #8C6180;
+  transform: scale(1.05);
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .description {
   font-size: 16px;
   line-height: 1.6;
   color: black;
+  margin-top: 20px;
 }
 
 .cv-button {
-  display: inline-block;       /* Make it behave like a button */
+  display: inline-block;
   text-align: center;
-  padding: 0;                  /* Remove default padding from links */
+  padding: 0;
   width: 217px;
   height: 58px;
-  line-height: 58px;           /* Vertically center text */
+  line-height: 58px;
   background-color: #F6C4C8;
   color: #8C6180;
   border: none;
@@ -47,14 +77,15 @@ body {
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
-  text-decoration: none;       /* Remove underline */
+  text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   user-select: none;
+  margin-top: 20px;
 }
 
 .cv-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px #8C6180; 
+  box-shadow: 0 6px 12px #8C6180;
 }
 
 .social-buttons {
@@ -78,7 +109,7 @@ body {
   cursor: pointer;
   border: none;
   opacity: 0;
-  animation: fadeUp 0.6s ease forwards; /* keep final state */
+  animation: fadeUp 0.6s ease forwards;
   transition: box-shadow 0.3s ease;
 }
 
@@ -102,9 +133,8 @@ body {
   }
 }
 
-/* On hover spin + move up - apply animation but keep opacity and background */
 .social-button:hover {
-  animation: spinMoveUp 1.5s linear forwards; /* play once, keep final state */
+  animation: spinMoveUp 1.5s linear forwards;
   box-shadow: 0 0 15px 3px #8C6180;
   opacity: 1;
   background-color: #F6C4C8;
@@ -131,6 +161,7 @@ body {
   cursor: pointer;
   box-shadow: 0 4px 6px #8C6180;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
 }
 
 .nav-button:hover {
@@ -138,7 +169,6 @@ body {
   box-shadow: 0 6px 12px #8C6180;
 }
 
-/* Fullscreen video overlay */
 .video-overlay {
   position: fixed;
   top: 0;
@@ -147,7 +177,7 @@ body {
   height: 100vh;
   z-index: 9999;
   background: black;
-  display: none; /* hidden by default */
+  display: none;
 }
 
 .video-overlay video {
@@ -156,59 +186,48 @@ body {
   object-fit: cover;
 }
 
-.header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.profile-pic {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  flex-shrink: 0;
-}
-
-.profile-pic img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /* ========== MOBILE STYLES ========== */
 
 @media (max-width: 768px) {
-  /* Make body scrollable on mobile and remove fixed height */
   body {
     height: auto;
     overflow-y: auto;
     padding: 20px 10px;
   }
-  
+
   .container {
     position: static;
     max-width: 100%;
     padding: 15px 10px;
-    margin-top: 60px; /* leave space for navbar */
+    margin-top: 60px;
+    background: transparent;
   }
-  
+
+  .header-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
   .heading {
     font-size: 36px;
     text-align: center;
-    color: black;
+    margin-top: 10px;
   }
-  
+
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+  }
+
   .description {
     font-size: 14px;
     line-height: 1.5;
     color: black;
     text-align: center;
   }
-  
+
   .cv-button {
     width: 100%;
     height: 50px;
@@ -218,22 +237,21 @@ body {
     margin: 20px 0;
     display: block;
   }
-  
+
   .social-buttons {
-    position: fixed;
-    justify-content: center;
+    position: static;
     margin-top: 20px;
+    justify-content: center;
     gap: 15px;
   }
-  
+
   .social-button {
     width: 50px;
     height: 50px;
     border-radius: 15px;
     background-size: 50%;
   }
-  
-  /* Navbar as 2x2 grid with equal sized buttons */
+
   .navbar {
     position: fixed;
     top: 0;
@@ -248,26 +266,16 @@ body {
     box-shadow: 0 2px 8px rgba(140, 97, 128, 0.2);
     z-index: 1000;
     border-radius: 10px;
+    background-color: #fefefe;
   }
-  
+
   .nav-button {
-    width: 100%;
     height: 45px;
     font-size: 1rem;
-    padding: 0;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-}
-
-.header-row {
-  flex-direction: column;
-  align-items: center;
-}
-
-.profile-pic {
-  margin-top: 10px;
 }
 
