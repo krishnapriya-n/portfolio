@@ -1,64 +1,69 @@
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/0000cc83dffd82d127c55576a573c555890bb344/static/assets/bg-image.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Geist Mono', monospace;
-      overflow: hidden;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/0000cc83dffd82d127c55576a573c555890bb344/static/assets/bg-image.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Geist Mono', monospace;
+  overflow: hidden;
+}
 
-    .container {
-      position: absolute;
-      top: 20%;
-      left: 10%;
-      max-width: 700px;
-      padding: 20px;
-      border-radius: 10px;
-    }
+.container {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 10px;
+}
 
-    .heading {
-      font-family: 'Jura', sans-serif;
-      font-size: 64px;
-      font-weight: bold;
-      color: black;
-      margin-bottom: 20px;
-    }
+.heading {
+  font-family: 'Jura', sans-serif;
+  font-size: 64px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 20px;
+}
 
-    .description {
-      font-size: 16px;
-      line-height: 1.6;
-      color: black;
-    }
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: black;
+}
 
-    .cv-button {
-      margin-top: 20px;
-      width: 217px;
-      height: 58px;
-      background-color: #F6C4C8;
-      color: #8C6180;
-      border: none;
-      border-radius: 5px;
-      box-shadow: 0 4px 6px #8C6180;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 16px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+.cv-button {
+  display: inline-block;       /* Make it behave like a button */
+  text-align: center;
+  padding: 0;                  /* Remove default padding from links */
+  width: 217px;
+  height: 58px;
+  line-height: 58px;           /* Vertically center text */
+  background-color: #F6C4C8;
+  color: #8C6180;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px #8C6180;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;       /* Remove underline */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+}
 
-    .cv-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px #8C6180;
-    }
+.cv-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px #8C6180; 
+}
 
-    .social-buttons {
-      position: absolute;
-      bottom: 30px;
-      right: 30px;
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-    }
+.social-buttons {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
 
 .social-button {
   width: 70px;
