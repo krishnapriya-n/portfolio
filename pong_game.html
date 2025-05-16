@@ -2,126 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Pong Game Popup</title>
+<title>Pong Game</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    overflow-x: hidden;
-  }
-
-  /* Modal overlay */
-  #gameModal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    padding: 20px;
-  }
-
-  /* Modal content */
-  #gameContent {
-    background: white;
-    border-radius: 12px;
-    padding: 10px;
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    box-shadow: 0 0 20px #8C6180;
-  }
-
-  /* Close button */
-  #closeBtn {
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: #8C6180;
-  }
-
-  /* Canvas container for aspect ratio */
-  .canvas-wrapper {
-    position: relative;
-    width: 100%;
-    padding-top: 150%; /* Aspect ratio: 400/600 = 0.66 = 66% => use 150% to be safe */
-  }
-
   canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    border-radius: 10px;
-  }
-
-  #openGameBtn {
-    margin: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    background-color: #F6C4C8;
-    color: #8C6180;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px #8C6180;
-  }
-
-  #openGameBtn:hover {
-    transform: translateY(-2px);
+    border: 2px solid #8C6180;
+    background: white;
+    display: block;
+    margin: 20px auto;
   }
 </style>
 </head>
 <body>
+  <canvas id="gameCanvas"></canvas>
 
-<!-- Trigger Button -->
-<button id="openGameBtn">Play Pong</button>
-
-<!-- Game Modal -->
-<div id="gameModal">
-  <div id="gameContent">
-    <button id="closeBtn" aria-label="Close game">&times;</button>
-    <div class="canvas-wrapper">
-      <canvas id="gameCanvas" width="400" height="600"></canvas>
-    </div>
-  </div>
-</div>
-
-<!-- JS -->
-<script src="static/assets/pong.js"></script>
-<script>
-  const modal = document.getElementById('gameModal');
-  const openBtn = document.getElementById('openGameBtn');
-  const closeBtn = document.getElementById('closeBtn');
-
-  openBtn.onclick = () => {
-    modal.style.display = 'flex';
-    window.startGame();
-  };
-
-  closeBtn.onclick = () => {
-    modal.style.display = 'none';
-    window.stopGame();
-  };
-
-  modal.onclick = (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-      window.stopGame();
-    }
-  };
-</script>
+  <!-- Correct path to your JS file -->
+  <script src="static/pong.js"></script>
+  <script>
+    window.onload = () => {
+      window.startGame();
+    };
+  </script>
 </body>
 </html>
