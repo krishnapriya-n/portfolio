@@ -10,15 +10,23 @@
 
   <!-- External CSS -->
   <link rel="stylesheet" href="styles.css" />
+
+  <script>
+  function launchGame() {
+    window.open('pong_game.html', '_blank');
+  }
+</script>
+
 </head>
 <body>
 
   <div class="container">
     <div class="header-row">
       <div class="heading">Welcome to my Portfolio!</div>
-    <div class="profile-pic">
-      <img src="static/assets/photo.png" alt="Profile Photo" />
-    </div>
+    <div class="profile-pic" onclick="launchGame()" style="cursor: pointer;">
+  <img src="static/assets/photo.png" alt="Profile Picture" />
+</div>
+
   </div>
     <br />
     <div class="description">
