@@ -2,73 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Krishna Priya's Portfolio</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&family=Jura:wght@700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist+Mono&family=Jura:wght@700&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- External CSS -->
   <link rel="stylesheet" href="styles.css" />
 
   <script>
-  function launchGame() {
-    window.open('pong_game.html', '_blank');
-  }
-</script>
+    function launchGame() {
+      window.open('pong_game.html', '_blank');
+    }
 
+    function playTransition() {
+      // This function presumably triggers your video transition animation.
+      // Add implementation here or keep linked to external transition.js
+      const videoOverlay = document.getElementById('videoOverlay');
+      const video = document.getElementById('transitionVideo');
+
+      videoOverlay.style.display = 'block';
+      video.play();
+
+      video.onended = () => {
+        videoOverlay.style.display = 'none';
+      };
+    }
+  </script>
 </head>
 <body>
-
   <div class="container">
-    <div class="header-row">
-      <div class="heading">Welcome to my Portfolio!</div>
-    <div class="profile-pic" onclick="launchGame()" style="cursor: pointer;">
-  <img src="static/assets/photo.png" alt="Profile Picture" />
-</div>
+    <header class="header-row" role="banner">
+      <h1 class="heading">Welcome to my Portfolio!</h1>
+      <div
+        class="profile-pic"
+        onclick="launchGame()"
+        role="button"
+        tabindex="0"
+        aria-label="Launch game"
+        onkeydown="if(event.key==='Enter' || event.key===' ') launchGame();"
+        style="cursor: pointer;"
+      >
+        <img src="static/assets/photo.png" alt="Profile Picture of Krishna Priya" />
+      </div>
+    </header>
 
+    <section class="description" aria-label="Introduction">
+      <p>
+        Hi! I am Krishna Priya, a recent Computer Science graduate. Thank you for visiting my website, my showcase of skills that I have collected through my studies.
+      </p>
+      <p>
+        I am currently on a hunt for graduate/ junior roles. If you are hiring, or know someone who might, please contact me on one of the socials I have attached on the bottom.
+      </p>
+    </section>
+
+    <a
+      href="https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/Krishna%20Priya%20Nimmagadda.pdf"
+      download="Krishna_Priya_Nimmagadda_CV.pdf"
+      class="cv-button"
+      role="button"
+      aria-label="Download Krishna Priya's CV"
+    >
+      View My CV
+    </a>
   </div>
-    <br />
-    <div class="description">
-        Hi! I am Krishna Priya, a recent Computer Science graduate. Thank you for visiting my website, my showcase of skills that I have collected through my studies.<br /><br /><br />
-        I am currently on a hunt for graduate/ junior roles. If you are hiring, or know someone who might, please contact me on one of the socials I have attached on the bottom.<br />
-    </div>
-    <br /><br /><br />
-    <a href="https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/Krishna%20Priya%20Nimmagadda.pdf" download="Krishna_Priya_Nimmagadda_CV.pdf" class="cv-button">
-        View My CV
-    </a>
-    </div>
 
-  <div class="social-buttons">
-    <a href="mailto:kannakrishnapriya@gmail.com" target="_blank" aria-label="Email">
-      <button class="social-button" style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/mail-icon.png');"></button>
+  <nav class="social-buttons" aria-label="Social media links">
+    <a
+      href="mailto:kannakrishnapriya@gmail.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Send email to Krishna Priya"
+    >
+      <button
+        class="social-button"
+        style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/mail-icon.png');"
+      ></button>
     </a>
-    <a href="https://www.linkedin.com/in/krishna-priya-nimmagadda/" target="_blank" aria-label="LinkedIn">
-      <button class="social-button" style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/linkedin-icon.png');"></button>
-    </a>
-    <a href="https://github.com/krishnapriya-n" target="_blank" aria-label="GitHub">
-      <button class="social-button" style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/github-icon.png');"></button>
-    </a>
-    <a href="https://www.youtube.com/@KpRokzzCodes" target="_blank" aria-label="YouTube">
-      <button class="social-button" style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/youtube-icon.png');"></button>
-    </a>
-  </div>
 
-  <div class="navbar">
+    <a
+      href="https://www.linkedin.com/in/krishna-priya-nimmagadda/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="LinkedIn profile of Krishna Priya"
+    >
+      <button
+        class="social-button"
+        style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/linkedin-icon.png');"
+      ></button>
+    </a>
+
+    <a
+      href="https://github.com/krishnapriya-n"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="GitHub profile of Krishna Priya"
+    >
+      <button
+        class="social-button"
+        style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/github-icon.png');"
+      ></button>
+    </a>
+
+    <a
+      href="https://www.youtube.com/@KpRokzzCodes"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="YouTube channel of Krishna Priya"
+    >
+      <button
+        class="social-button"
+        style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/youtube-icon.png');"
+      ></button>
+    </a>
+  </nav>
+
+  <nav class="navbar" role="navigation" aria-label="Primary navigation">
     <button class="nav-button" onclick="playTransition()">Home</button>
     <button class="nav-button" onclick="playTransition()">Projects</button>
     <button class="nav-button" onclick="playTransition()">Certificates</button>
     <button class="nav-button" onclick="playTransition()">About Me</button>
+  </nav>
+
+  <div class="video-overlay" id="videoOverlay" style="display: none;">
+    <video id="transitionVideo" autoplay muted>
+      <source
+        src="https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/mov.mp4"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
   </div>
 
-    <div class="video-overlay" id="videoOverlay">
-      <video id="transitionVideo" autoplay muted>
-        <source src="https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/mov.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-
-    <script src="https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/transition.js"></script>
-
-  </body>
+  <script src="https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/transition.js"></script>
+</body>
 </html>
