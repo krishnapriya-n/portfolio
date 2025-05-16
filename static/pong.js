@@ -30,6 +30,9 @@ let rightPressed = false;
 // Touch dragging
 let dragging = false;
 
+// For controlling animation frame loop externally
+let animationFrameId = null;
+
 function drawPaddle() {
   ctx.fillStyle = '#8C6180';
   ctx.fillRect(paddleX, paddleY, paddleWidth, paddleHeight);
@@ -158,8 +161,38 @@ function draw() {
   } else {
     updatePaddle();
     updateBall();
-    requestAnimationFrame(draw);
+    animationFrameId = requestAnimationFrame(draw);
   }
 }
 
-draw();
+// Functions to start/stop game externally (for sidebar open/close)
+function startGame() {
+  // Reset game if over
+  if (isGameOver) {
+    ballX = canvas.width / 2;
+    ballY = canvas.height / 2;
+    ballSpeedX = 3;
+    ballSpeedY = -3;
+    score = 0;
+    isGameOver = false;
+    paddleX = (canvas.width - paddleWidth) / 2;
+  }
+  if (!animationFrameId) {
+    draw();
+  }
+}
+
+function stopGame() {
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+  }
+}
+
+// Expose startGame and stopGame globally for sidebar control
+window.startGame = startGame;
+window.stopGame = stopGame;
+window.draw = draw; // in case you want to manually call draw
+
+// Start game automatically if you want
+// draw();
