@@ -1,32 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pong Game</title>
-  <style>
-    body {
-      margin: 0;
-      background: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    canvas {
-      border: 2px solid #8C6180;
-      background: white;
-      display: block;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Pong Game Popup</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  /* The modal background */
+  #gameModal {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  /* The modal content container */
+  #gameContent {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    width: 450px;
+    max-width: 90%;
+  }
+
+  /* Close button */
+  #closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  /* Canvas styling */
+  canvas {
+    border: 2px solid #8C6180;
+    display: block;
+    margin: 0 auto;
+    background: white;
+  }
+</style>
 </head>
 <body>
-  <canvas id="gameCanvas"></canvas>
 
-  <script src="static/pong.js"></script>
-  <script>
-    // Start the game as soon as script loads
+<button id="openGameBtn">Open Pong Game</button>
+
+<!-- Modal -->
+<div id="gameModal">
+  <div id="gameContent">
+    <button id="closeBtn">&times;</button>
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
+  </div>
+</div>
+
+<script src="assets/pong.js"></script>
+<script>
+  const modal = document.getElementById('gameModal');
+  const openBtn = document.getElementById('openGameBtn');
+  const closeBtn = document.getElementById('closeBtn');
+
+  openBtn.onclick = () => {
+    modal.style.display = 'flex';
     window.startGame();
-  </script>
+  };
+
+  closeBtn.onclick = () => {
+    modal.style.display = 'none';
+    window.stopGame();
+  };
+
+  // Optional: Close modal when clicking outside content
+  modal.onclick = (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      window.stopGame();
+    }
+  };
+</script>
 </body>
 </html>
