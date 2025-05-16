@@ -15,8 +15,6 @@ body {
   max-width: 700px;
   padding: 20px;
   border-radius: 10px;
-  /* Remove background color - assuming none defined for desktop */
-  /* If you had background-color on container, make sure to remove */
 }
 
 .heading {
@@ -170,10 +168,8 @@ body {
   .container {
     position: static;
     max-width: 100%;
-    padding: 0; /* Remove padding so container doesn’t block content */
-    margin-top: 110px; /* space below navbar to avoid overlap */
-    border-radius: 0;
-    background: transparent !important;
+    padding: 15px 10px;
+    margin-top: 60px; /* leave space for navbar */
   }
   
   .heading {
@@ -224,7 +220,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, auto);
     gap: 10px 15px;
-    background: rgba(246, 196, 200, 0.9);
     padding: 10px 15px;
     box-shadow: 0 2px 8px rgba(140, 97, 128, 0.2);
     z-index: 1000;
