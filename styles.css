@@ -89,7 +89,7 @@ body {
 .fake-terminal {
   position: absolute;
   top: 20%;
-  right: 5%;
+  right: 15%;
   width: 380px;
   background-color: #000;
   color: #f6c4c8;
