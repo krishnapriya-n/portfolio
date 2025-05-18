@@ -5,14 +5,19 @@ function resizeCanvas() {
   const maxWidth = window.innerWidth;
   const maxHeight = window.innerHeight;
 
-  // Portrait aspect ratio
+  // Portrait aspect ratio 9:16
   const aspectRatio = 9 / 16;
 
+  // Set a max height limit (e.g., 600px)
+  const maxAllowedHeight = 600;
+
+  // Start with width = window width
   let width = maxWidth;
   let height = width / aspectRatio;
 
-  if (height > maxHeight) {
-    height = maxHeight;
+  // If height is too big or exceeds maxAllowedHeight, adjust width & height
+  if (height > maxHeight || height > maxAllowedHeight) {
+    height = Math.min(maxHeight, maxAllowedHeight);
     width = height * aspectRatio;
   }
 
@@ -24,7 +29,6 @@ function resizeCanvas() {
   ballX = canvas.width / 2;
   ballY = canvas.height / 2;
 }
-
 
 window.addEventListener('resize', resizeCanvas);
 
