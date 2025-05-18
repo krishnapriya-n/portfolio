@@ -1,7 +1,7 @@
 <h1 align="center">🌸 Krishna Priya Nimmagadda's Portfolio 🌸</h1>
 
 <p align="center">
-  <a href="https://krishnapriya-n.github.io/portfolio" target="_blank">
+  <a href="https://kprokzz-portfolio.vercel.app/" target="_blank">
     <img src="https://img.shields.io/badge/Live-Demo-%23F6C4C8?style=for-the-badge&logo=githubpages&logoColor=8C6180" />
   </a>
   <img src="https://img.shields.io/badge/Built%20With-HTML%2FCSS%2FJS-%23F6C4C8?style=for-the-badge&logo=javascript&logoColor=8C6180" />
