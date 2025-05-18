@@ -15,22 +15,21 @@
   <div class="container">
     <header class="header-row" role="banner">
       <h1 class="heading">Welcome to my Portfolio!</h1>
-      <div
-        class="profile-pic"
-        onclick="launchGame()"
-        role="button"
-        tabindex="0"
-        aria-label="Launch game"
-        onkeydown="if(event.key==='Enter' || event.key===' ') launchGame();"
-        style="cursor: pointer;"
-      >
-        <img src="static/assets/photo.png" alt="Profile Picture of Krishna Priya" />
+      <div class="profile-and-role">
+        <div
+          class="profile-pic"
+          onclick="launchGame()"
+          role="button"
+          tabindex="0"
+          aria-label="Launch game"
+          onkeydown="if(event.key==='Enter' || event.key===' ') launchGame();"
+        >
+          <img src="static/assets/photo.png" alt="Profile Picture of Krishna Priya" />
+        </div>
 
-        <div class="role-description" style="font-family: 'Geist Mono', monospace; max-width: 300px;">
-          <h2 style="margin: 0 0 8px 0; font-weight: 700;">My Role</h2>
-          <p style="margin: 0; font-size: 1rem; line-height: 1.3;">
-            Student | Aspiring Game Developer | Cybersecurity Enthusiast
-          </p>
+        <div class="role-description">
+          <h2>My Role</h2>
+          <p>Student | Aspiring Game Developer | Cybersecurity Enthusiast</p>
         </div>
       </div>
     </header>
@@ -84,7 +83,7 @@
     </video>
   </div>
 
-  <!-- Pong Game Modal (moved inside body + fixed sizing) -->
+  <!-- Pong Game Modal -->
   <div id="gameModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
     <div style="position:relative; width:90%; max-width:500px; aspect-ratio:9/16; background:#fff; border-radius:12px; box-shadow:0 0 20px #8C6180; overflow:hidden;">
       <button onclick="closeGame()" style="position:absolute; top:10px; right:15px; font-size:24px; background:none; border:none; cursor:pointer; z-index:2; color:#8C6180;">×</button>
