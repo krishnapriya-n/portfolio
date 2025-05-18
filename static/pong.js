@@ -2,16 +2,29 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 function resizeCanvas() {
-  const container = canvas.parentElement;
-  const width = container.clientWidth;
-  const height = container.clientHeight;
+  const maxWidth = window.innerWidth;
+  const maxHeight = window.innerHeight;
+
+  // Portrait aspect ratio
+  const aspectRatio = 9 / 16;
+
+  let width = maxWidth;
+  let height = width / aspectRatio;
+
+  if (height > maxHeight) {
+    height = maxHeight;
+    width = height * aspectRatio;
+  }
+
   canvas.width = width;
   canvas.height = height;
+
   paddleX = (canvas.width - paddleWidth) / 2;
+  paddleY = canvas.height - paddleHeight - 10;
   ballX = canvas.width / 2;
   ballY = canvas.height / 2;
-  paddleY = canvas.height - paddleHeight - 10;
 }
+
 
 window.addEventListener('resize', resizeCanvas);
 
