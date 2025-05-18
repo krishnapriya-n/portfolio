@@ -6,52 +6,10 @@
   <title>Krishna Priya's Portfolio</title>
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Geist+Mono&family=Jura:wght@700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&family=Jura:wght@700&display=swap" rel="stylesheet" />
 
   <!-- External CSS -->
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Pong Game Modal -->
-  <!-- Pong Game Modal -->
-  <div id="gameModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
-    <div style="position:relative; width:90%; max-width:500px; aspect-ratio:2/3; background:#fff; border-radius:12px; box-shadow:0 0 20px #8C6180; overflow:hidden;">
-      <button onclick="closeGame()" style="position:absolute; top:10px; right:15px; font-size:24px; background:none; border:none; cursor:pointer; z-index:2; color:#8C6180;">×</button>
-      <iframe id="gameFrame" src="" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-  </div>
-
-  <script>
-    function launchGame() {
-      const modal = document.getElementById('gameModal');
-      const iframe = document.getElementById('gameFrame');
-      iframe.src = "pong_game.html";
-      modal.style.display = 'flex';
-    }
-
-    function closeGame() {
-      const modal = document.getElementById('gameModal');
-      const iframe = document.getElementById('gameFrame');
-      iframe.src = "";
-      modal.style.display = 'none';
-    }
-    
-    function playTransition() {
-      // This function presumably triggers your video transition animation.
-      // Add implementation here or keep linked to external transition.js
-      const videoOverlay = document.getElementById('videoOverlay');
-      const video = document.getElementById('transitionVideo');
-
-      videoOverlay.style.display = 'block';
-      video.play();
-
-      video.onended = () => {
-        videoOverlay.style.display = 'none';
-      };
-    }
-  </script>
 </head>
 <body>
   <div class="container">
@@ -91,52 +49,17 @@
   </div>
 
   <nav class="social-buttons" aria-label="Social media links">
-    <a
-      href="mailto:kannakrishnapriya@gmail.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Send email to Krishna Priya"
-    >
-      <button
-        class="social-button"
-        style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/mail-icon.png');"
-      ></button>
+    <a href="mailto:kannakrishnapriya@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send email">
+      <button class="social-button" style="background-image: url('static/assets/mail-icon.png');"></button>
     </a>
-
-    <a
-      href="https://www.linkedin.com/in/krishna-priya-nimmagadda/"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="LinkedIn profile of Krishna Priya"
-    >
-      <button
-        class="social-button"
-        style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/linkedin-icon.png');"
-      ></button>
+    <a href="https://www.linkedin.com/in/krishna-priya-nimmagadda/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <button class="social-button" style="background-image: url('static/assets/linkedin-icon.png');"></button>
     </a>
-
-    <a
-      href="https://github.com/krishnapriya-n"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="GitHub profile of Krishna Priya"
-    >
-      <button
-        class="social-button"
-        style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/github-icon.png');"
-      ></button>
+    <a href="https://github.com/krishnapriya-n" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <button class="social-button" style="background-image: url('static/assets/github-icon.png');"></button>
     </a>
-
-    <a
-      href="https://www.youtube.com/@KpRokzzCodes"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="YouTube channel of Krishna Priya"
-    >
-      <button
-        class="social-button"
-        style="background-image: url('https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/youtube-icon.png');"
-      ></button>
+    <a href="https://www.youtube.com/@KpRokzzCodes" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <button class="social-button" style="background-image: url('static/assets/youtube-icon.png');"></button>
     </a>
   </nav>
 
@@ -149,14 +72,47 @@
 
   <div class="video-overlay" id="videoOverlay" style="display: none;">
     <video id="transitionVideo" autoplay muted>
-      <source
-        src="https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/assets/mov.mp4"
-        type="video/mp4"
-      />
+      <source src="static/assets/mov.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </div>
 
-  <script src="https://raw.githubusercontent.com/krishnapriya-n/portfolio/main/static/transition.js"></script>
+  <!-- Pong Game Modal (moved inside body + fixed sizing) -->
+  <div id="gameModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
+    <div style="position:relative; width:90%; max-width:500px; aspect-ratio:9/16; background:#fff; border-radius:12px; box-shadow:0 0 20px #8C6180; overflow:hidden;">
+      <button onclick="closeGame()" style="position:absolute; top:10px; right:15px; font-size:24px; background:none; border:none; cursor:pointer; z-index:2; color:#8C6180;">×</button>
+      <iframe id="gameFrame" src="" style="width:100%; height:100%; border:none;"></iframe>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function launchGame() {
+      const modal = document.getElementById('gameModal');
+      const iframe = document.getElementById('gameFrame');
+      iframe.src = "pong_game.html";
+      modal.style.display = 'flex';
+    }
+
+    function closeGame() {
+      const modal = document.getElementById('gameModal');
+      const iframe = document.getElementById('gameFrame');
+      iframe.src = "";
+      modal.style.display = 'none';
+    }
+
+    function playTransition() {
+      const videoOverlay = document.getElementById('videoOverlay');
+      const video = document.getElementById('transitionVideo');
+
+      videoOverlay.style.display = 'block';
+      video.play();
+
+      video.onended = () => {
+        videoOverlay.style.display = 'none';
+      };
+    }
+  </script>
+  <script src="static/transition.js"></script>
 </body>
 </html>
