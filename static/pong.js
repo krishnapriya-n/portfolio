@@ -1,8 +1,13 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = 400;
-canvas.height = 600;
+function resizeCanvas() {
+  const container = canvas.parentElement;
+  canvas.width = container.clientWidth;
+  canvas.height = container.clientHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 
 // Paddle properties
 const paddleWidth = 100;
