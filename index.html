@@ -14,11 +14,30 @@
   <!-- External CSS -->
   <link rel="stylesheet" href="styles.css" />
 
+  <!-- Pong Game Modal -->
+  <!-- Pong Game Modal -->
+  <div id="gameModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
+    <div style="position:relative; width:90%; max-width:500px; aspect-ratio:2/3; background:#fff; border-radius:12px; box-shadow:0 0 20px #8C6180; overflow:hidden;">
+      <button onclick="closeGame()" style="position:absolute; top:10px; right:15px; font-size:24px; background:none; border:none; cursor:pointer; z-index:2; color:#8C6180;">×</button>
+      <iframe id="gameFrame" src="" style="width:100%; height:100%; border:none;"></iframe>
+    </div>
+  </div>
+
   <script>
     function launchGame() {
-      window.open('pong_game.html', '_blank', 'width=450,height=650');
+      const modal = document.getElementById('gameModal');
+      const iframe = document.getElementById('gameFrame');
+      iframe.src = "pong_game.html";
+      modal.style.display = 'flex';
     }
 
+    function closeGame() {
+      const modal = document.getElementById('gameModal');
+      const iframe = document.getElementById('gameFrame');
+      iframe.src = "";
+      modal.style.display = 'none';
+    }
+    
     function playTransition() {
       // This function presumably triggers your video transition animation.
       // Add implementation here or keep linked to external transition.js
