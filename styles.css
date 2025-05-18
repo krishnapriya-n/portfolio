@@ -86,6 +86,66 @@ body {
   user-select: text;
 }
 
+.fake-terminal {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  width: 380px;
+  background-color: #000;
+  color: #f6c4c8;
+  font-family: 'Geist Mono', monospace;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(140, 97, 128, 0.4);
+  overflow: hidden;
+  z-index: 5;
+  animation: fadeUp 1s ease forwards;
+}
+
+.terminal-header {
+  background-color: #1a1a1a;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red { background-color: #ff605c; }
+.yellow { background-color: #ffbd44; }
+.green { background-color: #00ca4e; }
+
+.terminal-title {
+  margin-left: auto;
+  font-size: 14px;
+  color: #888;
+}
+
+.terminal-body {
+  padding: 15px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.prompt {
+  color: #ff79c6;
+}
+
+/* Hide terminal on mobile */
+@media (max-width: 768px) {
+  .fake-terminal {
+    position: static;
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+
 .cv-button {
   display: inline-block;
   text-align: center;
