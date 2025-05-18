@@ -80,5 +80,4 @@ portfolio/
 ## ⭐️ Show Some Love
 
 If you liked this portfolio, consider starring the repo ✨  
-And feel free to fork and remix it to build your own!
 
