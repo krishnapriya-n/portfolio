@@ -199,5 +199,11 @@ window.startGame = startGame;
 window.stopGame = stopGame;
 window.draw = draw; // in case you want to manually call draw
 
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  paddleX = (canvas.width - paddleWidth) / 2;
+});
+
 // Start game automatically if you want
 // draw();
