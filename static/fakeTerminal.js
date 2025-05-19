@@ -1,37 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const terminal = document.querySelector('.fake-terminal');
-  const terminalContent = document.querySelector('.terminal-content');
+  const terminal = document.getElementById("terminal");
 
-  const messages = [
-    'KrishnaPriya@Portfolio:~$ npm start',
-    'Starting development server...',
-    'Compiled successfully!',
-    'You can now view your app in the browser.',
-    'Local: http://localhost:3000',
-    '',
-    'Building portfolio terminal...',
-    'Loading social matrix...',
-    'Initializing personal AI...',
-    '🚀 Ready!'
+  const terminalLines = [
+    "krishna-priya@portfolio:~",
+    "KrishnaPriya@Portfolio:~$ npm start",
+    "Starting development server...",
+    "Compiled successfully!",
+    "You can now view your app in the browser.",
+    "Local: http://localhost:3000",
+    "Building portfolio terminal...",
+    "Loading social matrix...",
+    "Initializing personal dashboard...",
+    "🚀 Ready!",
+    ">"
   ];
 
-  if (terminal && terminalContent) {
-    terminal.style.display = 'block';
-    terminalContent.textContent = '';
+  let lineIndex = 0;
+  let charIndex = 0;
 
-    let index = 0;
+  function typeLine() {
+    if (lineIndex >= terminalLines.length) return;
 
-    function typeLine() {
-      if (index < messages.length) {
-        const line = document.createElement('div');
-        line.textContent = messages[index];
-        terminalContent.appendChild(line);
-        terminalContent.scrollTop = terminalContent.scrollHeight;
-        index++;
-        setTimeout(typeLine, 700);
+    const line = terminalLines[lineIndex];
+    const span = document.createElement("div");
+    span.className = "terminal-line";
+    terminal.appendChild(span);
+
+    const interval = setInterval(() => {
+      if (charIndex < line.length) {
+        span.textContent += line.charAt(charIndex);
+        charIndex++;
+      } else {
+        clearInterval(interval);
+        lineIndex++;
+        charIndex = 0;
+        setTimeout(typeLine, 400);
       }
-    }
-
-    typeLine();
+    }, 35);
   }
+
+  typeLine();
 });
