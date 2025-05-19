@@ -54,7 +54,7 @@
   </div>
 
   <!-- Fake Terminal -->
-  <div class="fake-terminal" aria-label="Fake Terminal Window">
+  <div class="fake-terminal" aria-label="Fake Terminal Window" role="region">
     <div class="terminal-header">
       <span class="dot red"></span>
       <span class="dot yellow"></span>
@@ -62,16 +62,6 @@
       <span class="terminal-title">krishna-priya@portfolio:~</span>
     </div>
     <div class="terminal-content" id="terminal"></div>
-    <div class="terminal-body">
-      <p><span class="prompt">> </span>whoami</p>
-      <p>Krishna Priya</p>
-
-      <p><span class="prompt">> </span>skills --list</p>
-      <p>Python, HTML, CSS, JS, Java, C++, C, Flask, Firebase, Unreal, Cybersecurity (and a lot more!)</p>
-
-      <p><span class="prompt">> </span>projects --recent</p>
-      <p>SkillCraftr, Vanguard Protocol FPS, YT Music Converter, This Portfolio ;)</p>
-    </div>
   </div>
 
   <!-- Social Buttons -->
@@ -116,6 +106,7 @@
 
   <!-- Scripts -->
   <script>
+    // Launch pong game modal
     function launchGame() {
       const modal = document.getElementById('gameModal');
       const iframe = document.getElementById('gameFrame');
@@ -123,6 +114,7 @@
       modal.style.display = 'flex';
     }
 
+    // Close pong game modal
     function closeGame() {
       const modal = document.getElementById('gameModal');
       const iframe = document.getElementById('gameFrame');
@@ -130,21 +122,68 @@
       modal.style.display = 'none';
     }
 
+    // Play transition video
     function playTransition() {
       const videoOverlay = document.getElementById('videoOverlay');
       const video = document.getElementById('transitionVideo');
 
       videoOverlay.style.display = 'block';
+      video.currentTime = 0;
       video.play();
 
       video.onended = () => {
         videoOverlay.style.display = 'none';
       };
     }
-  </script>
 
-  <!-- External Scripts -->
-  <script src="static/transition.js"></script>
-  <script src="static/fakeTerminal.js"></script>
+    // Typing animation for fake terminal
+    document.addEventListener("DOMContentLoaded", function () {
+      const terminal = document.getElementById("terminal");
+
+      const terminalLines = [
+        "krishna-priya@portfolio:~$ npm start",
+        "Starting development server...",
+        "Compiled successfully!",
+        "You can now view your app in the browser.",
+        "Local: http://localhost:3000",
+        "Building portfolio terminal...",
+        "Loading social matrix...",
+        "Initializing personal dashboard...",
+        "🚀 Ready!",
+        "> whoami",
+        "Krishna Priya",
+        "> skills --list",
+        "Python, HTML, CSS, JS, Java, C++, C, Flask, Firebase, Unreal, Cybersecurity (and a lot more!)",
+        "> projects --recent",
+        "SkillCraftr, Vanguard Protocol FPS, YT Music Converter, This Portfolio ;)"
+      ];
+
+      let lineIndex = 0;
+      let charIndex = 0;
+
+      function typeLine() {
+        if (lineIndex >= terminalLines.length) return;
+
+        const line = terminalLines[lineIndex];
+        const span = document.createElement("p");
+        span.className = "terminal-line";
+        terminal.appendChild(span);
+
+        const interval = setInterval(() => {
+          if (charIndex < line.length) {
+            span.textContent += line.charAt(charIndex);
+            charIndex++;
+          } else {
+            clearInterval(interval);
+            lineIndex++;
+            charIndex = 0;
+            setTimeout(typeLine, 400);
+          }
+        }, 35);
+      }
+
+      typeLine();
+    });
+  </script>
 </body>
 </html>
