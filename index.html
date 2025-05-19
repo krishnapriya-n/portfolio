@@ -55,6 +55,7 @@
 
   <div class="fake-terminal" aria-label="Fake Terminal Window">
   <div class="terminal-header">
+    <div class="terminal-content" id="terminal"></div>
     <span class="dot red"></span>
     <span class="dot yellow"></span>
     <span class="dot green"></span>
@@ -136,6 +137,44 @@
         videoOverlay.style.display = 'none';
       };
     }
+
+    const terminalLines = [
+      "Initializing system...",
+      "Loading Krishna Priya's portfolio...",
+      "Fetching projects...",
+      "System ready.",
+      "Type 'help' to begin >"
+    ];
+
+    const terminal = document.getElementById("terminal");
+    let lineIndex = 0;
+    let charIndex = 0;
+
+    function typeLine() {
+      if (lineIndex < terminalLines.length) {
+        const line = terminalLines[lineIndex];
+        const span = document.createElement("div");
+        span.className = "terminal-line";
+        terminal.appendChild(span);
+
+        const interval = setInterval(() => {
+          if (charIndex < line.length) {
+            span.textContent += line.charAt(charIndex);
+            charIndex++;
+          } else {
+            clearInterval(interval);
+            lineIndex++;
+            charIndex = 0;
+            setTimeout(typeLine, 500); // delay before next line
+          }
+        }, 50); // typing speed
+      }
+    }
+
+  // Start typing on load
+    window.addEventListener("DOMContentLoaded", typeLine);
+  </script>
+
   </script>
   <script src="static/transition.js"></script>
 </body>
