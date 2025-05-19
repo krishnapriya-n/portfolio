@@ -16,7 +16,6 @@ body {
   max-width: 700px;
   padding: 20px;
   border-radius: 10px;
-  /* background-color: rgba(255, 255, 255, 0.8); */
 }
 
 .header-row {
@@ -93,7 +92,7 @@ body {
   width: 300px;
   max-height: 400px;
   background: black;
-  color: #ff69b4; /* hot pink text */
+  color: #ff69b4;
   font-family: 'Geist Mono', monospace;
   padding: 20px;
   border-radius: 10px;
@@ -106,6 +105,12 @@ body {
   white-space: pre-wrap;
   font-size: 14px;
   line-height: 1.5;
+  padding: 20px;
+  background: black;
+  color: #ff69b4;
+  border-bottom: 1px solid #444;
+  min-height: 160px;
+  overflow-y: auto;
 }
 
 .terminal-header {
@@ -142,6 +147,26 @@ body {
 
 .prompt {
   color: #ff79c6;
+}
+
+.terminal-final-line {
+  font-weight: bold;
+  color: #ff69b4;
+  margin-top: 10px;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: popIn 0.5s ease forwards;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Hide terminal on mobile */
