@@ -54,24 +54,24 @@
   </div>
 
   <div class="fake-terminal" aria-label="Fake Terminal Window">
-  <div class="terminal-header">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">krishna-priya@portfolio:~</span>
+    </div>
     <div class="terminal-content" id="terminal"></div>
-    <span class="dot red"></span>
-    <span class="dot yellow"></span>
-    <span class="dot green"></span>
-    <span class="terminal-title">krishna-priya@portfolio:~</span>
-  </div>
-  <div class="terminal-body">
-    <p><span class="prompt">> </span>whoami</p>
-    <p>Krishna Priya</p>
+    <div class="terminal-body">
+      <p><span class="prompt">> </span>whoami</p>
+      <p>Krishna Priya</p>
 
-    <p><span class="prompt">> </span>skills --list</p>
-    <p>Python, HTML, CSS, JS, Java, C++, C, Flask, Firebase, Unreal, Cybersecurity (and a lot more!)</p>
+      <p><span class="prompt">> </span>skills --list</p>
+      <p>Python, HTML, CSS, JS, Java, C++, C, Flask, Firebase, Unreal, Cybersecurity (and a lot more!)</p>
 
-    <p><span class="prompt">> </span>projects --recent</p>
-    <p>SkillCraftr, Vanguard Protocol FPS, YT Music Converter, This Portfolio ;)</p>
+      <p><span class="prompt">> </span>projects --recent</p>
+      <p>SkillCraftr, Vanguard Protocol FPS, YT Music Converter, This Portfolio ;)</p>
+    </div>
   </div>
-</div>
 
   <nav class="social-buttons" aria-label="Social media links">
     <a href="mailto:kannakrishnapriya@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send email">
@@ -142,9 +142,10 @@
       "Initializing system...",
       "Loading Krishna Priya's portfolio...",
       "Fetching projects...",
-      "System ready.",
-      "Type 'help' to begin >"
+      "System ready."
     ];
+
+    const finalLine = "Type 'help' to begin >";
 
     const terminal = document.getElementById("terminal");
     let lineIndex = 0;
@@ -165,16 +166,24 @@
             clearInterval(interval);
             lineIndex++;
             charIndex = 0;
-            setTimeout(typeLine, 500); // delay before next line
+            setTimeout(typeLine, 500);
           }
-        }, 50); // typing speed
+        }, 50);
+      } else {
+        setTimeout(showFinalLine, 600);
       }
     }
 
-  // Start typing on load
+    function showFinalLine() {
+      const span = document.createElement("div");
+      span.className = "terminal-final-line";
+      span.textContent = finalLine;
+      terminal.appendChild(span);
+    }
+
     window.addEventListener("DOMContentLoaded", typeLine);
   </script>
-  
+
   <script src="static/transition.js"></script>
 </body>
 </html>
