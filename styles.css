@@ -90,15 +90,22 @@ body {
   position: absolute;
   top: 20%;
   right: 15%;
-  width: 380px;
-  background-color: #000;
-  color: #f6c4c8;
+  width: 300px;
+  max-height: 400px;
+  background: black;
+  color: #ff69b4; /* hot pink text */
   font-family: 'Geist Mono', monospace;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(140, 97, 128, 0.4);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #8C6180;
   overflow: hidden;
-  z-index: 5;
-  animation: fadeUp 1s ease forwards;
+  display: none;
+}
+
+.fake-terminal .terminal-content {
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .terminal-header {
